@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>가격 합계 계산기</title>
+</head>
+
+<body>
+    <div id = "contents">
+         
+        <ul>
+            <li>
+                <label for ="oPrice1">원래 가격</label>
+                <input type="number" id="oPrice1" >원
+            </li>
+            <li>
+                <label for ="oPrice2">원래 가격</label>
+                <input type="number" id="oPrice2" >원
+            </li>
+            <li>
+                <label for ="oPrice3">원래 가격</label>
+                <input type="number" id="oPrice3" >원
+            </li>
+            <li>
+
+                <button onclick="showPrice()">가격들 합 계산하기</button>
+            </li>
+        </ul>
+        <div id="showResult"></div>
+    </div>
+
+<script>
+    function showPrice() {
+        var originPrice1 = Number(document.querySelector("#oPrice1").value);
+        var originPrice2 = Number(document.querySelector("#oPrice2").value);
+        var originPrice3 = Number(document.querySelector("#oPrice3").value);
+        var sum = originPrice1 + originPrice2 + originPrice3;
+        var level;
+        var rewardRate;
+
+        if (sum >= 50000) {
+            level = "VIP";
+            rewardRate = 3;
+        } else if (sum >= 30000) {
+            level = "Gold";
+            rewardRate = 2;
+        } else {
+            level = "Silver";
+            rewardRate = 1;
+        }
+
+        document.querySelector("#showResult").textContent = "상품의 총합은 " + sum + "원이고, 등급은 " + level + "이며, 적립률은 " + rewardRate + "%입니다.구매하신 금액의 적립급은 " + (sum * rewardRate / 100) + "원입니다.";
+    }
+</script>
+</body>
+</html>
